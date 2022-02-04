@@ -1,0 +1,29 @@
+<%- include ('./partials/header.ejs') -%> 
+<div class="container">
+    <nav class="navbar">
+        <a href="/" class="option">My Note's</a>
+        <div class="options">
+            <% if (user) { %>
+                <a href="/user/session" class="option"><%= user.username %> </a>
+            <% } %>
+            <a href="/user/session" class="option">Create Note</a>
+            <a href="/user/logout" class="option">Logout</a>
+        </div>
+</nav>
+<main class="main">
+    <h3>Your Note's</h3>
+    <% if (notes.length> 0) { %>
+        <% notes.forEach(element => { %>
+            <div class="note">
+                <a href="/notes/delete/<%= element._id %>" class="btn-notes"><img class="icon" src="/public/icons/trash.png" alt=""></a>
+                <a href="/notes/edit/<%= element._id %>" class="btn-notes"><img class="icon" src="/public/icons/editing.png" alt="" alt=""></a>
+                <p><%= element.title %></p>
+                <p><%= element.description %></p>
+            </div>
+        <% }) %>
+    <% } else { %>
+            <p>You still have no notes</p>
+    <% } %>
+</main>
+</div>
+<%- include ('./partials/footer.ejs') -%> 

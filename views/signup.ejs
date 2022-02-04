@@ -1,0 +1,40 @@
+<%- include ('./partials/header.ejs') -%> 
+    <div class="container">
+        <nav class="navbar">
+            <a href="/" class="option">My Note's</a>
+            <div class="options">
+            <p>Signup</p>
+        </div>
+    </nav>
+    <main class="main">
+        <h3>Welcome to My Note's</h3>
+        <form action="/user/signup" method="post" class="form">
+            <h3>Create your account</h3>
+            <br>
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="john99"
+            value="<% if (typeof values !== 'undefined') { %><%= values.username %><% } %>">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="john@example.com"
+            value="<% if (typeof values !== 'undefined') { %><%= values.email %><% } %>">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password"
+            value="<% if (typeof values !== 'undefined') { %><%= values.password %><% } %>">
+            <button type="submit" class="btn btn-signup">Signup</button>
+        </form>
+        <div class="errors">
+        <% if (typeof validations !== 'undefined') { %>
+            <% validations.forEach(error => { %>
+                <div class="error">
+                    <strong><%= error.msg %></strong>
+                </div>
+             <% }) %>
+            <% } %>
+
+            <% if ( error ) { %>
+                <p><%= error %></p>
+            <% } %>
+        </div>
+    </main>
+    </div>
+<%- include ('./partials/footer.ejs') -%> 

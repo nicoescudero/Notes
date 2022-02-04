@@ -1,0 +1,36 @@
+<%- include ('./partials/header.ejs') -%> 
+    <div class="container">
+        <nav class="navbar">
+            <a href="/" class="option">My Note's</a>
+            <div class="options">
+            <p>Login</p>
+        </div>
+    </nav>
+    <main class="main">
+        <h3>Welcome to My Note's</h3>
+        <form action="/user/login" method="post" class="form">
+            <h3>Enter your account</h3>
+            <br>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="john@example.com"
+            value="<% if (typeof values !== 'undefined') { %><%= values.email %><% } %>">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password"
+            value="<% if (typeof values !== 'undefined') { %><%= values.password %><% } %>">
+            <button type="submit" class="btn btn-login">Login</button>
+        </form>
+        <div class="errors">
+            <% if ( error ) { %>
+                    <p><%= error %></p>
+                <% } %>
+            <% if (typeof validations !== 'undefined') { %>
+                <% validations.forEach(error => { %>
+                    <div class="error">
+                        <p><%= error.msg %></p>
+                    </div>
+                 <% }) %>
+                <% } %>
+            </div>
+    </main>
+    </div>
+<%- include ('./partials/footer.ejs') -%> 
