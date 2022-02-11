@@ -13,7 +13,6 @@ controller.loginUser=passport.authenticate('local-signin',{
 
 controller.logout=(req,res)=>{
     req.session.token='';
-    req.session=null;
     req.logout();
     return res.render('login');
 }

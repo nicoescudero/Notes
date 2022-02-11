@@ -1,7 +1,7 @@
 <%- include ('./partials/header.ejs') -%> 
 <div class="container">
     <nav class="navbar">
-        <a href="/" class="option">My Note's</a>
+        <a href="/" class="option">My Notes</a>
         <div class="options">
             <% if (user) { %>
                 <a href="/user/session" class="option"><%= user.username %> </a>
@@ -11,7 +11,7 @@
         </div>
 </nav>
 <main class="main">
-    <h3>Your Note's</h3>
+    <h3>Your Notes</h3>
     <% if (notes.length> 0) { %>
         <% notes.forEach(element => { %>
             <div class="note">

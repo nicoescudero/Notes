@@ -1,7 +1,7 @@
 <%- include ('./partials/header.ejs') -%> 
 <div class="container">
     <nav class="navbar">
-        <a href="/" class="option">My Note's</a>
+        <a href="/" class="option">My Notes</a>
         <div class="options">
             <% if (user) { %>
                 <a href="/user/session" class="option"><%= user.username %> </a>
@@ -12,7 +12,7 @@
     </div>
 </nav>
 <main class="main">
-    <h3>Welcome to My Note's</h3>
+    <h3>Welcome to My Notes</h3>
     <br>
     <img src="/public/icons/note.svg" alt="">
     <br>
