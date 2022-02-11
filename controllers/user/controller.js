@@ -12,13 +12,14 @@ controller.loginUser=passport.authenticate('local-signin',{
 })
 
 controller.logout=(req,res)=>{
+    req.session.token='';
+    req.session=null;
     req.logout();
-    req.flash('message','You are logged out now');
-    res.render('login');
+    return res.render('login');
 }
 
 controller.redirectIndex=(req,res)=>{
-    res.redirect('/');
+    return res.redirect('/');
 }
 
 module.exports=controller;

@@ -16,26 +16,24 @@ controller.createNote=async(req,res)=>{
 }
 
 controller.getAllNotes=async(req,res)=>{
-    const id=req.params.id
-    const notes=await Notes.find({userId:id});
-    res.render('notes',{notes});
+    const notes=await Notes.find({userId:req.user.id});
+    return res.render('notes',{notes});   
 }
 
 controller.editNote=async(req,res)=>{
     const id=req.params.id
     const note=await Notes.findById(id);
-    res.render('editNote',{note});
+    return res.render('editNote',{note});
 }
 
 controller.updateNote=async(req,res)=>{
     const {id}=req.params;
     const {title,description}=req.body;
     const note=await Notes.findById(id);
-    const userId=note.userId;
     note.title=title;
     note.description=description;
     await note.save();
-    res.redirect(`/notes/allNotes/${userId}`);
+    return res.redirect(`/notes/allNotes`);
 }
 
 controller.deleteNote=async(req,res)=>{
@@ -47,9 +45,9 @@ controller.deleteNote=async(req,res)=>{
             var index=user.notes.indexOf(id);
             await user.notes.splice(index, 1);
             await user.save();
-            res.redirect(`/notes/allNotes/${userId}`);      
+            return res.redirect(`/notes/allNotes`);      
         } catch (error) {
-            res.redirect('/user/session');      
+            return res.redirect('/user/session');      
         }
 }
 

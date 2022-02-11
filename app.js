@@ -5,6 +5,7 @@ const morgan=require('morgan');
 const helmet=require('helmet');
 const passport=require('passport');
 const flash=require('connect-flash');
+const session=require('express-session');
 
 require('dotenv').config();
 require('./config/database');
@@ -16,8 +17,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json()); 
 app.use(morgan('dev'));
 app.use(helmet());
-//app.use(require('cookie-parser')());
-app.use(require('express-session')({secret:process.env.SECRET_KEY,resave:false,saveUninitialized:false}));
+app.use(session({secret:process.env.SECRET_KEY,resave:false,saveUninitialized:false}));
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());

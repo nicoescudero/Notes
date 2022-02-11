@@ -11,10 +11,14 @@
         </div>
     </nav>
     <main class="main">
-        <h3>Edit Note</h3>
-        <form action="/notes/update/<%= note._id %> " method="post">
+        <form action="/notes/update/<%= note._id %> " method="post" class="form">
+            <h3>Edit Note</h3>
+            <br>
+            <label for="title">Title</label>
             <input type="text" name="title" id="title" value="<%= note.title %> ">
-            <input type="text" name="description" id="description" value="<%= note.description %> ">
+            <br>
+            <label for="title">Description</label>
+            <textarea name="description" id="description" cols="30" rows="10"><%= note.description %></textarea>
             <button type="submit" class="btn">Update</button>
         </form>
     </main>

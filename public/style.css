@@ -6,9 +6,9 @@
 }
 
 body{
-    background: #1D4350;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #A43931, #1D4350);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #A43931, #1D4350); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #1e3c72;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2a5298, #1e3c72);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2a5298, #1e3c72); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color:whitesmoke;
     font-family: 'Varela Round', sans-serif;
 }
@@ -105,7 +105,7 @@ body{
 }
 
 .btn-notes{
-    margin: 1% auto;
+    margin: 3px auto;
     background-color: inherit;
     border:1px solid white;
     border-radius:2px;
@@ -114,4 +114,12 @@ body{
 }
 .noteId{
     display: none;
+}
+.title{
+    margin-top: 3% ;
+}
+
+#title,#description,#email,#password{
+    background-color:rgba(28, 28, 28, 0.516);
+    color:white;
 }

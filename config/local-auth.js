@@ -1,6 +1,7 @@
 const User=require('../controllers/user/model');
 const passport=require('passport');
 const LocalStrategy = require('passport-local');
+const jwt=require('jsonwebtoken');
 
 passport.use('local-signup',new LocalStrategy({
     usernameField: 'email',
@@ -18,7 +19,13 @@ passport.use('local-signup',new LocalStrategy({
             password:await User.encryptPassword(password)
         });
         await newUser.save();
-        done(null,newUser);    
+        const token=await jwt.sign({id:newUser._id,usename:newUser.username},process.env.KEY_TOKEN,{expiresIn: '15m'});
+        req.session.token=token;
+        const user={
+            id:newUser._id,
+            username:newUser.username,
+        }
+        return done(null,user);
     }
 }));
 
@@ -31,7 +38,16 @@ passport.use('local-signin',new LocalStrategy({
     if(!user)return done(null,false,req.flash('error','Not user found'));
     else{
         const match=await user.verifyPassword(password);
-        if(match)return done(null,user);
+        if(match)
+        {
+            const token=await jwt.sign({id:user._id,usename:user.username},process.env.KEY_TOKEN,{expiresIn: '15m'});
+            req.session.token=token;
+            const userFound={
+             id:user._id,
+             username:user.username,
+            }
+            return done(null,userFound);
+        }
         else return done(null,false,req.flash('error','Invalid Password'));
     }
 }));

@@ -4,7 +4,7 @@
             <a href="/" class="option">My Note's</a>
             <div class="options">
                 <a href="/user/session" class="option"><%= user.username %> </a>
-                <a href="/notes/allNotes/<%= user._id %>" class="option">All Notes</a>
+                <a href="/notes/allNotes" class="option">All Notes</a>
                 <a href="/user/logout" class="option">Logout</a>
             </div>
     </nav>
@@ -14,7 +14,7 @@
             <h3>Create a note</h3>
             <br>
             <label for="title">Title</label>
-            <input type="text" name="title" id="title" placeholder="Buy a cocacola">
+            <input type="text" name="title" id="title" placeholder="My note!!!" autofocus>
             <label for="description">Description</label>
             <textarea name="description" id="description" cols="30" rows="10"></textarea>
             <button type="submit" class="btn btn-login">Save</button>
